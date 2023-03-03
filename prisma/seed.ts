@@ -19,6 +19,7 @@ async function main() {
   console.log({ event });
 }
 
+
 main()
   .catch((e) => {
     console.error(e);
