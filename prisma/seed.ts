@@ -31,11 +31,12 @@ async function main() {
     ticketType = await prisma.ticketType.create({
       data: {
         name: "Online",
-        price: 0,
+        price: 100,
         isRemote: true,
         includesHotel: false
       },
     });
+    
     ticketType = await prisma.ticketType.create({
       data: {
         name: "Presencial com Hotel",
@@ -46,6 +47,7 @@ async function main() {
     });
   }
 }
+
 
 main()
   .catch((e) => {
