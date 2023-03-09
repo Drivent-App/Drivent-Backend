@@ -36,6 +36,14 @@ async function main() {
         includesHotel: false
       },
     });
+    ticketType = await prisma.ticketType.create({
+      data: {
+        name: "Presencial com Hotel",
+        price: 600,
+        isRemote: false,
+        includesHotel: true
+      },
+    });
   }
 }
 
