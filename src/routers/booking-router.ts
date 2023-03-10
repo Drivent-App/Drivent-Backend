@@ -5,7 +5,7 @@ import { bookingRoom, listBooking, changeBooking, getBookingbyRoom } from "@/con
 const bookingRouter = Router();
 
 bookingRouter
-  //.all("/*", authenticateToken)
+  .all("/*", authenticateToken)
   .get("", listBooking)
   .get("/:roomId", getBookingbyRoom)
   .post("", bookingRoom)
