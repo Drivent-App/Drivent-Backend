@@ -2,14 +2,17 @@ import { AuthenticatedRequest } from "@/middlewares";
 import { Response } from "express";
 import httpStatus from "http-status";
 import bookingService from "@/services/booking-service";
+import hotelService from "@/services/hotels-service";
 
 export async function listBooking(req: AuthenticatedRequest, res: Response) {
   try {
     const { userId } = req;
     const booking = await bookingService.getBooking(userId);
+    const hotel = await hotelService.getHotelsById(booking.Room.hotelId)
     return res.status(httpStatus.OK).send({
       id: booking.id,
       Room: booking.Room,
+      Hotel: hotel
     });
   } catch (error) {
     return res.sendStatus(httpStatus.NOT_FOUND);
