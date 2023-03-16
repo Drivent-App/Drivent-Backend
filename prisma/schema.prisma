@@ -14,7 +14,7 @@ model User {
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
   Booking       Booking[]
-  Enrollment    Enrollment?
+  Enrollment    Enrollment[]
   Session       Session[]
   UsersActivity UsersActivity[]
 }
