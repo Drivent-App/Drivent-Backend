@@ -40,15 +40,15 @@ model Event {
 }
 
 model Enrollment {
-  id        Int      @id @default(autoincrement())
-  name      String   @db.VarChar(255)
-  cpf       String   @db.VarChar(255)
+  id        Int       @id @default(autoincrement())
+  name      String    @db.VarChar(255)
+  cpf       String    @db.VarChar(255)
   birthday  DateTime
-  phone     String   @db.VarChar(255)
-  userId    Int      @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  User      User     @relation(fields: [userId], references: [id])
+  phone     String    @db.VarChar(255)
+  userId    Int       @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  User      User      @relation(fields: [userId], references: [id])
   Address   Address[]
   Ticket    Ticket[]
 }
@@ -135,10 +135,13 @@ model Booking {
 model Activities {
   id              Int             @id @default(autoincrement())
   lectureName     String          @unique @db.VarChar(40)
-  data            DateTime        @db.Date
+  day             DateTime        @db.Date
+  timeStart       DateTime        @db.Date
+  timeEnd         DateTime        @db.Date
   numberVacancies Int
   local           String          @db.VarChar(40)
-  created_at      DateTime        @default(now()) @db.Date
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
   UsersActivity   UsersActivity[]
 }
 
@@ -146,6 +149,8 @@ model UsersActivity {
   id         Int        @id @default(autoincrement())
   userId     Int
   activityId Int
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
   Activities Activities @relation(fields: [activityId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   User       User       @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

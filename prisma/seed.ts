@@ -18,13 +18,15 @@ async function main() {
   }
 
   console.log({ event });
-
-  const user = await prisma.user.create({
-    data: {
-      email: 'testuser@test.com',
-      password: 'testuserpassword',
-    },
-  });
+  let user = await prisma.user.findFirst();
+  if (!user) {
+    user = await prisma.user.create({
+      data: {
+        email: 'testuser@test.com',
+        password: 'testuserpassword',
+      },
+    });
+  }
 
   let ticketType = await prisma.ticketType.findFirst();
   if (!ticketType) {
@@ -59,13 +61,15 @@ async function main() {
     hotels = await prisma.hotel.create({
       data: {
         name: 'Hotel California',
-        image: 'https://imagenes.elpais.com/resizer/HWIMbHAaBcu5VQv83rLr0pKsVIw=/1960x1470/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/N72AADPVEHMDZTMWJK3D6HDTZ4.jpg',
+        image:
+          'https://imagenes.elpais.com/resizer/HWIMbHAaBcu5VQv83rLr0pKsVIw=/1960x1470/arc-anglerfish-eu-central-1-prod-prisa.s3.amazonaws.com/public/N72AADPVEHMDZTMWJK3D6HDTZ4.jpg',
       },
     });
     hotels = await prisma.hotel.create({
       data: {
         name: 'O Grande Hotel Budapeste',
-        image: 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6BB8E1DC494D04518BDB4DE0947B1CBC8D422508AF8D6A23C126BFBC661B8565/scale?width=1200&aspectRatio=1.78&format=jpeg',
+        image:
+          'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6BB8E1DC494D04518BDB4DE0947B1CBC8D422508AF8D6A23C126BFBC661B8565/scale?width=1200&aspectRatio=1.78&format=jpeg',
       },
     });
   }
@@ -118,16 +122,95 @@ async function main() {
       data: [
         {
           userId: user.id,
-          roomId: 2
+          roomId: 2,
         },
         {
           userId: user.id,
-          roomId: 2
+          roomId: 2,
         },
         {
           userId: user.id,
-          roomId: 3
-        }
+          roomId: 3,
+        },
+      ],
+    });
+  }
+  let activities = await prisma.activities.findFirst();
+  if (!activities) {
+    await prisma.activities.createMany({
+      data: [
+        {
+          lectureName: 'Como falar em publico',
+          day: '2023-08-20T00:00:00.000Z',
+          timeStart: '2023-08-20T10:00:00.000Z',
+          timeEnd: '2023-08-21T12:00:00.000Z',
+          numberVacancies: 30,
+          local: 'Auditório Principal',
+        },
+        {
+          lectureName: 'Como ficar rico',
+          day: '2023-08-21T00:00:00.000Z',
+          timeStart: '2023-08-21T11:00:00.000Z',
+          timeEnd: '2023-08-21T15:00:00.000Z',
+          numberVacancies: 3,
+          local: 'Auditório Lateral',
+        },
+        {
+          lectureName: 'Crise existencial',
+          day: '2023-08-21T00:00:00.000Z',
+          timeStart: '2023-08-21T16:00:00.000Z',
+          timeEnd: '2023-08-21T17:00:00.000Z',
+          numberVacancies: 15,
+          local: 'Sala de Workshop',
+        },
+        {
+          lectureName: 'Como virar dev',
+          day: '2023-08-22T00:00:00.000Z',
+          timeStart: '2023-08-22T10:00:00.000Z',
+          timeEnd: '2023-08-22T12:00:00.000Z',
+          numberVacancies: 25,
+          local: 'Auditório Principal',
+        },
+        {
+          lectureName: 'Eu e meu clone',
+          day: '2023-08-22T00:00:00.000Z',
+          timeStart: '2023-08-22T08:00:00.000Z',
+          timeEnd: '2023-08-22T10:00:00.000Z',
+          numberVacancies: 1,
+          local: 'Auditório Lateral',
+        },
+        {
+          lectureName: 'Crise existencial 2',
+          day: '2023-08-23T00:00:00.000Z',
+          timeStart: '2023-08-23T16:30:00.000Z',
+          timeEnd: '2023-08-23T17:00:00.000Z',
+          numberVacancies: 20,
+          local: 'Sala de Workshop',
+        },
+        {
+          lectureName: 'Como cozinhar ovo',
+          day: '2023-08-23T00:00:00.000Z',
+          timeStart: '2023-08-23T12:00:00.000Z',
+          timeEnd: '2023-08-23T13:00:00.000Z',
+          numberVacancies: 30,
+          local: 'Auditório Principal',
+        },
+        {
+          lectureName: 'Como não ficar pobre',
+          day: '2023-08-23T00:00:00.000Z',
+          timeStart: '2023-08-23T10:00:00.000Z',
+          timeEnd: '2023-08-23T12:00:00.000Z',
+          numberVacancies: 10,
+          local: 'Auditório Lateral',
+        },
+        {
+          lectureName: 'Como fazer miojo',
+          day: '2023-08-23T00:00:00.000Z',
+          timeStart: '2023-08-23T16:30:00.000Z',
+          timeEnd: '2023-08-23T17:00:00.000Z',
+          numberVacancies: 15,
+          local: 'Sala de Workshop',
+        },
       ],
     });
   }
