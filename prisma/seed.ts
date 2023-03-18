@@ -141,15 +141,15 @@ async function main() {
       data: [
         {
           lectureName: 'Como falar em publico',
-          day: '2023-08-20T00:00:00.000Z',
-          timeStart: '2023-08-20T10:00:00.000Z',
-          timeEnd: '2023-08-21T12:00:00.000Z',
+          day: '2023-08-21T03:00:00.000Z',
+          timeStart: '2023-08-20T12:00:00.000Z',
+          timeEnd: '2023-08-20T13:00:00.000Z',
           numberVacancies: 30,
           local: 'Auditório Principal',
         },
         {
           lectureName: 'Como ficar rico',
-          day: '2023-08-21T00:00:00.000Z',
+          day: '2023-08-21T03:00:00.000Z',
           timeStart: '2023-08-21T11:00:00.000Z',
           timeEnd: '2023-08-21T15:00:00.000Z',
           numberVacancies: 3,
@@ -157,7 +157,7 @@ async function main() {
         },
         {
           lectureName: 'Crise existencial',
-          day: '2023-08-21T00:00:00.000Z',
+          day: '2023-08-21T03:00:00.000Z',
           timeStart: '2023-08-21T16:00:00.000Z',
           timeEnd: '2023-08-21T17:00:00.000Z',
           numberVacancies: 15,
@@ -165,7 +165,7 @@ async function main() {
         },
         {
           lectureName: 'Como virar dev',
-          day: '2023-08-22T00:00:00.000Z',
+          day: '2023-08-22T03:00:00.000Z',
           timeStart: '2023-08-22T10:00:00.000Z',
           timeEnd: '2023-08-22T12:00:00.000Z',
           numberVacancies: 25,
@@ -173,7 +173,7 @@ async function main() {
         },
         {
           lectureName: 'Eu e meu clone',
-          day: '2023-08-22T00:00:00.000Z',
+          day: '2023-08-22T03:00:00.000Z',
           timeStart: '2023-08-22T08:00:00.000Z',
           timeEnd: '2023-08-22T10:00:00.000Z',
           numberVacancies: 1,
@@ -181,7 +181,7 @@ async function main() {
         },
         {
           lectureName: 'Crise existencial 2',
-          day: '2023-08-23T00:00:00.000Z',
+          day: '2023-08-23T03:00:00.000Z',
           timeStart: '2023-08-23T16:30:00.000Z',
           timeEnd: '2023-08-23T17:00:00.000Z',
           numberVacancies: 20,
@@ -189,7 +189,7 @@ async function main() {
         },
         {
           lectureName: 'Como cozinhar ovo',
-          day: '2023-08-23T00:00:00.000Z',
+          day: '2023-08-23T03:00:00.000Z',
           timeStart: '2023-08-23T12:00:00.000Z',
           timeEnd: '2023-08-23T13:00:00.000Z',
           numberVacancies: 30,
@@ -197,7 +197,7 @@ async function main() {
         },
         {
           lectureName: 'Como não ficar pobre',
-          day: '2023-08-23T00:00:00.000Z',
+          day: '2023-08-23T03:00:00.000Z',
           timeStart: '2023-08-23T10:00:00.000Z',
           timeEnd: '2023-08-23T12:00:00.000Z',
           numberVacancies: 10,
@@ -205,7 +205,7 @@ async function main() {
         },
         {
           lectureName: 'Como fazer miojo',
-          day: '2023-08-23T00:00:00.000Z',
+          day: '2023-08-23T03:00:00.000Z',
           timeStart: '2023-08-23T16:30:00.000Z',
           timeEnd: '2023-08-23T17:00:00.000Z',
           numberVacancies: 15,
