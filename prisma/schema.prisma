@@ -135,9 +135,9 @@ model Booking {
 model Activities {
   id              Int             @id @default(autoincrement())
   lectureName     String          @unique @db.VarChar(40)
-  day             DateTime        @db.Date
-  timeStart       DateTime        @db.Date
-  timeEnd         DateTime        @db.Date
+  day             DateTime        
+  timeStart       DateTime        
+  timeEnd         DateTime        
   numberVacancies Int
   local           String          @db.VarChar(40)
   createdAt       DateTime        @default(now())

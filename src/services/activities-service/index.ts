@@ -10,6 +10,7 @@ async function findAllActivities() {
   return allActivities;
 }
 //validacoes (ticket presencial, pago e enrollment)
+
 async function findActivityByDay(day: Date) {
   const activities = activitiesRepository.getActivityByDay(day);
 
