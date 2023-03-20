@@ -4,7 +4,7 @@ import { getActivityByDay, getAllActivities } from '@/controllers/activities-con
 const activitiesRouter = Router();
 
 activitiesRouter
-.all('/', authenticateToken)
+.all('/*', authenticateToken)
 .get('/', getAllActivities)
 .get('/:day', getActivityByDay);
 

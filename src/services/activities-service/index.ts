@@ -1,20 +1,48 @@
 import { notFoundError } from '@/errors';
+import { forbiddenError } from '@/errors/forbidden-error';
 import activitiesRepository from '@/repositories/activities-repository';
+import enrollmentRepository from '@/repositories/enrollment-repository';
+import ticketRepository from '@/repositories/ticket-repository';
 
-async function findAllActivities() {
-  const allActivities = activitiesRepository.getAllActivities();
+async function findAllActivities(userId: number) {
+  const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
+  if (!enrollment) {
+    throw forbiddenError();
+  }
 
-  if (!allActivities) {
+  const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);
+  if (!ticket || ticket.status === 'RESERVED') {
+    throw forbiddenError();
+  }
+  if (ticket.TicketType.isRemote) {
+    throw forbiddenError();
+  }
+
+  const allActivities = await activitiesRepository.getAllActivities();
+  if (allActivities.length === 0) {
     throw notFoundError();
   }
   return allActivities;
 }
-//validacoes (ticket presencial, pago e enrollment)
 
-async function findActivityByDay(day: Date) {
-  const activities = activitiesRepository.getActivityByDay(day);
 
-  if (!activities) {
+async function findActivityByDay(userId:number,day: Date) {
+  const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
+  if (!enrollment) {
+    throw forbiddenError();
+  }
+
+  const ticket = await ticketRepository.findTicketByEnrollmentId(enrollment.id);
+  if (!ticket || ticket.status === 'RESERVED') {
+    throw forbiddenError();
+  }
+  if (ticket.TicketType.isRemote) {
+    throw forbiddenError();
+  }
+    
+  const activities = await activitiesRepository.getActivityByDay(day);
+
+  if (activities.length === 0) {
     throw notFoundError();
   }
 
