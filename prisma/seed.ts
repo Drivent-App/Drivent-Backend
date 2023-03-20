@@ -163,6 +163,7 @@ async function main() {
           numberVacancies: 15,
           local: 'Sala de Workshop',
         },
+
         {
           lectureName: 'Como virar dev',
           day: '2023-08-22T03:00:00.000Z',
@@ -187,6 +188,7 @@ async function main() {
           numberVacancies: 20,
           local: 'Sala de Workshop',
         },
+
         {
           lectureName: 'Como cozinhar ovo',
           day: '2023-08-23T03:00:00.000Z',
